@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>基于Vue的markdown编辑器</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/basic-ui.css">
+        <link rel="stylesheet" href="css/custom-ui.css">
+        <link rel="stylesheet" href="css/index.css">
+    </head>
+    <body>
+        <div id="app">
+            <div class="header">
+                <a href="http://loadingmore/vue-markdown">
+                    <h1>Markdown</h1>
+                </a>
+                <span>基于vue的在线格式化工具</span>
+            </div>
+            <div class="preview-content clearfix">
+                <div class="prev-editor left" v-if="isShow">
+                    <textarea spellcheck="false" class="prev-text" v-model="message"></textarea>
+                </div>
+                <div class="prev-view right" v-html="reversedMessage" v-if="isPrevShow">
+                    {{reversedMessage}}
+                </div>
+                <div class="prev-btn" @click="isClick" v-if="isShow">预览</div>
+                <div class="prev-editor-btn" @click="isEditor" v-if="isPrevShow">编辑</div>
+            </div>
+        </div>
+        <script src="lib/vue.js"></script>
+        <script src="lib/showdown.js"></script>
+
+        <script>
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    message: '## Hello World \n\n'+
+                            '> 最近有懒惰不少,好久没写博客了,今天在一群里看到有小伙伴问怎用正则规律的添加空格,花了几分钟写了下,做下记录\n\n'+
+                             '![](http://loadingmore.com/demo/src/img/url.jpg)\n'+
+                             '* 我是列表1 \n'+
+                             '* 我是列表2  \n\n'+
+                             '## 代码示例 \n'+
+                             '```javascript \n'+
+                             'function getbeauty(m,n){\n'+
+                             '    return m+n\n'+
+                             '} \n'+
+                             '```\n\n'+
+                             '---\n\n'+
+                             '## 表格示例\n'+
+                            '| 品类 | 个数 | 备注 |\n'+
+                            '|-----|-----|------|\n'+
+                            '| 苹果 | 1   | nice |\n'+
+                            '| 橘子 | 2   | job |\n\n'+
+                             '## 关于我\n'+
+                             '[我的博客](http://loadingmore.com) \n\n'+
+                             '**加粗一个字符**\n'+
+                             '\n'+
+                             '\n',
+                    isShow:true,
+                    isPrevShow:true
+                },
+                methods: {
+                    isClick(){
+                        this.isShow = false;
+                        this.isPrevShow = true;
+                    },
+                    isEditor(){
+                        this.isShow = true;
+                        this.isPrevShow = false;
+                    }
+                },
+                computed: {
+                    reversedMessage: function () {
+                        var converter =  new showdown.Converter({
+                        //   extensions: ['prettify','tasklist'],
+                          tables: true
+                        });
+                        return converter.makeHtml(this.message)
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
