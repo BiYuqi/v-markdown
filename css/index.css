@@ -106,14 +106,14 @@ a{
         display: block;
         position: absolute;
         top: 0;
-        right:18px;
+        right:0;
         z-index: 998;
     }
     .prev-editor-btn{
         display: block;
         position: absolute;
         top: 0;
-        right:18px;
+        right:0;
         z-index: 997;
         background-color: #36A399;
         color: #fff;
