@@ -75,7 +75,36 @@
                         //   extensions: ['prettify','tasklist'],
                           tables: true
                         });
-                        return converter.makeHtml(this.message)
+                        var config = {
+                            regs:[
+                                /(var|function|return|new|try|exec|match|catch|break|continue|case|for|if|else|while|switch)/g,
+                                /(this)/g,
+                                /(true|false)/g,
+                                /([+])/g
+                            ],
+                            fontColor:[
+                                '#9E70DD',
+                                '#9B2C34',
+                                '#D19A66',
+                                '#42A2EF'
+                            ]
+                        };
+                        var s = converter.makeHtml(this.message);
+                        for(var i=0;i<4;i++){
+                            s = s.replace(config.regs[i],function(m){
+                                return '<span style="color:'+config.fontColor[i]+'">'+m+'</span>'
+                            });
+                        }
+                        //函数名问题
+                        var regs = /\s(\w+)\(/g;
+                        var res = [];
+                        while(m = regs.exec(s)){
+                            res.push(m[1])
+                        }
+                        for(var i=0;i<res.length;i++){
+                            s = s.replace(res[i],'<span style="color:#3081E3">'+res[i]+'</span>');
+                        }
+                        return s;
                     }
                 }
             })
