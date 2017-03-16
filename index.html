@@ -20,95 +20,22 @@
             </div>
             <div class="preview-content clearfix">
                 <div class="prev-editor left" v-if="isShow">
-                    <textarea spellcheck="false" class="prev-text" v-model="message"></textarea>
+                    <textarea spellcheck="false" class="prev-text" v-model="message" id="bar"></textarea>
+                    <div class="copy-btn"  data-clipboard-target="#bar" title="点击即可">
+                        复制md
+                    </div>
+                    <div class="clear-btn" @click="clearmd">
+                        清除
+                    </div>
                 </div>
                 <div class="prev-view right" v-html="reversedMessage" v-if="isPrevShow">
                     {{reversedMessage}}
                 </div>
+
                 <div class="prev-btn" @click="isClick" v-if="isShow">预览</div>
                 <div class="prev-editor-btn" @click="isEditor" v-if="isPrevShow">编辑</div>
             </div>
         </div>
-        <script src="lib/vue.min.js"></script>
-        <script src="lib/showdown.min.js"></script>
-        <script>
-            var app = new Vue({
-                el: '#app',
-                data: {
-                    message: '## Hello World \n\n'+
-                            '> 最近有懒惰不少,好久没写博客了,今天在一群里看到有小伙伴问怎用正则规律的添加空格,花了几分钟写了下,做下记录.\n\n'+
-                             '![](http://loadingmore.com/demo/src/img/url.jpg)\n\n'+
-                             '* 我是列表1 \n'+
-                             '* 我是列表2  \n\n'+
-                             '## 代码示例 \n\n'+
-                             '```javascript \n'+
-                             'function getbeauty(m,n){\n'+
-                             '    return m+n\n'+
-                             '} \n'+
-                             '```\n\n'+
-                             '---\n\n'+
-                             '## 表格示例\n'+
-                            '| 品类 | 个数 | 备注 |\n'+
-                            '|-----|-----|------|\n'+
-                            '| 苹果 | 1   | nice |\n'+
-                            '| 橘子 | 2   | job |\n\n'+
-                             '## 关于我\n'+
-                             '[我的博客](http://loadingmore.com) \n\n'+
-                             '**加粗一个字符**\n'+
-                             '\n'+
-                             '\n',
-                    isShow:true,
-                    isPrevShow:true
-                },
-                methods: {
-                    isClick(){
-                        this.isShow = false;
-                        this.isPrevShow = true;
-                    },
-                    isEditor(){
-                        this.isShow = true;
-                        this.isPrevShow = false;
-                    }
-                },
-                computed: {
-                    reversedMessage: function () {
-                        var converter =  new showdown.Converter({
-                        //   extensions: ['prettify','tasklist'],
-                          tables: true
-                        });
-                        var config = {
-                            regs:[
-                                /(var|function|return|new|try|exec|match|catch|break|continue|case|for|if|else|while|switch)/g,
-                                /(this)/g,
-                                /(true|false)/g,
-                                /([+])/g
-                            ],
-                            fontColor:[
-                                '#9E70DD',
-                                '#9B2C34',
-                                '#D19A66',
-                                '#42A2EF'
-                            ]
-                        };
-                        var s = converter.makeHtml(this.message);
-                        for(var i=0;i<4;i++){
-                            s = s.replace(config.regs[i],function(m){
-                                return '<span style="color:'+config.fontColor[i]+'">'+m+'</span>'
-                            });
-                        }
-                        //函数名问题
-                        var regs = /\s(\w+)\(/g;
-                        var res = [];
-                        while(m = regs.exec(s)){
-                            res.push(m[1])
-                        }
-                        for(var i=0;i<res.length;i++){
-                            s = s.replace(res[i],'<span style="color:#3081E3">'+res[i]+'</span>');
-                        }
-                        return s;
-                    }
-                }
-            })
-        </script>
+        <script src="js/bundle.js"></script>
     </body>
 </html>

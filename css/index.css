@@ -75,6 +75,7 @@ a{
 .prev-editor{
     width: 50%;
     height: 100%;
+    position: relative;
 }
 .prev-text::-webkit-scrollbar{
     width: 6px;
@@ -130,15 +131,43 @@ a{
 }
 .prev-btn,
 .prev-editor-btn{
-    width: 100px;
-    height: 30px;
+    width: 90px;
+    height: 26px;
     border-radius: 8px;
-    line-height: 30px;
+    line-height: 26px;
     text-align: center;
     color: green;
     background-color: #fafafa;
     display: none;
     cursor: pointer;
+}
+.copy-btn{
+    width: 90px;
+    height: 26px;
+    border-radius: 8px;
+    line-height: 26px;
+    text-align: center;
+    color: green;
+    background-color: #fafafa;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right:6px;
+    z-index: 998;
+}
+.clear-btn{
+    width: 90px;
+    height: 26px;
+    border-radius: 8px;
+    line-height: 26px;
+    text-align: center;
+    color: green;
+    background-color: #fafafa;
+    cursor: pointer;
+    position: absolute;
+    top: 30px;
+    right:6px;
+    z-index: 998;
 }
 @media screen and (max-width: 1040px) {
     .header h1{
@@ -152,6 +181,10 @@ a{
         width: 100%;
         height: 100%;
         position: relative;
+    }
+    .copy-btn,
+    .clear-btn{
+        display: none;
     }
     .prev-btn{
         display: block;
