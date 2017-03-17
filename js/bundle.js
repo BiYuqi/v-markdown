@@ -2675,7 +2675,6 @@ var app = new Vue({
     computed: {
         reversedMessage: function () {
             var converter =  new showdown.Converter({
-            //   extensions: ['prettify', 'tasklist', 'footnote'],
               tables: true
             });
             var config = {
