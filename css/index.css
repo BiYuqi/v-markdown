@@ -113,14 +113,15 @@ a{
     border: none;
     outline: none;
     background: #333;
+    background-color: #002B36;
     font-family: 'Microsoft Yahei';
     color: #FAFAFA;
     /*color: #1ecf7f;*/
+    color: #d1d0d0;
     font-size: 16px;
-    /*font-weight: 600;*/
     padding: 1em;
     resize: none;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 /**/
