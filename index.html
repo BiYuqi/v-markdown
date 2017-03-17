@@ -16,13 +16,13 @@
                 <a href="http://loadingmore/vue-markdown">
                     <h1>Markdown</h1>
                 </a>
-                <span>基于vue的在线格式化工具</span>
+                <span>基于vue的在线预览工具</span>
+                <div class="copy-btn"  data-clipboard-target="#bar" title="点击即可">复制md</div>
+                <div class="clear-btn" @click="clearmd">清除md</div>
             </div>
             <div class="preview-content clearfix">
                 <div class="prev-editor left" v-if="isShow">
                     <textarea spellcheck="false" class="prev-text" v-model="message" id="bar"></textarea>
-                    <div class="copy-btn"  data-clipboard-target="#bar" title="点击即可">复制md</div>
-                    <div class="clear-btn" @click="clearmd">清除</div>
                 </div>
                 <div class="prev-view right" v-html="reversedMessage" v-if="isPrevShow">
                     {{reversedMessage}}

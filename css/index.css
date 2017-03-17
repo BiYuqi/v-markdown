@@ -36,6 +36,7 @@ a{
     line-height: 78px;
     padding:0 20px;
     /*background-color: #879FA0;*/
+    position: relative;
     background: -moz-linear-gradient(left, #4FC08D 0, #086CAF 100%);
     background: -webkit-linear-gradient(left, #4FC08D 0, #086CAF 100%);
     background: -o-linear-gradient(left, #4FC08D 0, #086CAF 100%);
@@ -127,7 +128,8 @@ a{
     width: 50%;
     height: 100%;
     padding: 1em;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 .prev-btn,
 .prev-editor-btn{
@@ -151,8 +153,8 @@ a{
     background-color: #fafafa;
     cursor: pointer;
     position: absolute;
-    top: 0;
-    right:6px;
+    top: 26px;
+    right:100px;
     z-index: 998;
 }
 .clear-btn{
@@ -165,7 +167,7 @@ a{
     background-color: #fafafa;
     cursor: pointer;
     position: absolute;
-    top: 30px;
+    top: 26px;
     right:6px;
     z-index: 998;
 }
