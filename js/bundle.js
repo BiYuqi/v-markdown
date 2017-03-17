@@ -2604,14 +2604,29 @@ var app = new Vue({
         message: localStorage.getItem('saveData') !== null ? localStorage.getItem('saveData') :'## Hello World \n\n'+
                 '> 最近有懒惰不少,好久没写博客了,今天在一群里看到有小伙伴问怎用正则规律的添加空格,花了几分钟写了下,做下记录.\n\n'+
                  '![](http://loadingmore.com/demo/src/img/url.jpg)\n\n'+
-                 '* 我是列表1 \n'+
-                 '* 我是列表2  \n\n'+
+                 '* 支持语法高亮\n'+
+                 '* 支持实时预览\n'+
+                 '* 支持一键清除内容\n'+
+                 '* 支持一键拷贝markdown\n'+
+                 '* 支持本地LocalStorage存储\n\n'+
                  '## 代码示例 \n\n'+
                  '```javascript \n'+
                  'function getbeauty(m,n){\n'+
                  '    return m+n\n'+
                  '} \n'+
                  '```\n\n'+
+                 '## 动态样式的插入\n'+
+                '```javascript\n'+
+                'function loadStyle(href){\n'+
+                    '   var link = document.createElement("link");\n'+
+                    '   link.type = "text/css";\n'+
+                    '   link.rel = "stylesheet";\n'+
+                    '   link.href = href;\n'+
+                    '   var head = document.getElementsByTagName("head")[0];\n'+
+                    '   head.appendChild(link);\n'+
+                '}\n'+
+                'loadStyle(demo.css);\n'+
+                '```\n\n'+
                  '---\n\n'+
                  '###### 标题六\n'+
                  '##### 标题五\n'+
@@ -2620,15 +2635,10 @@ var app = new Vue({
                  '## 标题二\n\n'+
                  '## 绘制表格\n\n'+
                 '下面是个普通的表格\n'+
-                '| 信息 | id | 备注 |\n'+
-                '|:-----|-----|:------:|\n'+
-                '| 还不错 | 还不错   | 作者很帅 |\n'+
-                '| 博客 | http://loadingmore.com   | 程序媛 |\n\n'+
-                '支持另外一种语法：\n'+
                 '公众号| id/网址 | 备注\n'+
                 '------------ | ---------- | ------\n'+
-                '还不错 | 还不错 | 作者很帅 \n'+
-                '博客 |http://loadingmore.com  | 程序媛\n\n'+
+                '还不错|还不错|作者很帅 \n'+
+                '博客 |告白吧|程序媛\n\n'+
                  '## 关于我\n'+
                  '[我的博客](http://loadingmore.com) \n\n'+
                  '**加粗一个字符**\n'+
@@ -2675,17 +2685,21 @@ var app = new Vue({
                     /\b(var|function|return|new|try|exec|match|catch|break|continue|case|for|if|else|while|switch)\b/g,
                     /(this)/g,
                     /(true|false)/g,
-                    /([+])/g
+                    /([+])/g,
+                    /\b(document|innerHTML)\b/g,
+                    /\b(createElement|getElementsByTagName|appendChild|querySelector|querySelectorAll|getElementById)\b/g
                 ],
                 fontColor:[
                     '#9E70DD',
                     '#9B2C34',
                     '#D19A66',
-                    '#42A2EF'
+                    '#42A2EF',
+                    '#E06A6C',
+                    '#50B2BC'
                 ]
             };
             var s = converter.makeHtml(this.message);
-            for(var i=0;i<4;i++){
+            for(var i=0;i<6;i++){
                 s = s.replace(config.regs[i],function(m){
                     return '<span style="color:'+config.fontColor[i]+'">'+m+'</span>'
                 });

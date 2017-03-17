@@ -55,7 +55,7 @@ pre ol {
 }
 
 pre code, pre tt {
-    display: inline;
+    display: inline-block;
     // max-width: initial;
     padding: 0;
     margin: 0;
@@ -76,6 +76,9 @@ ul ,ol{
     padding-left: 32px !important;
     list-style-type: square !important;
 }
+ul li,ol li{
+    font-size: 16px;
+}
 blockquote {
   padding: 15px 1rem;
   font-size: 14px;
@@ -86,7 +89,9 @@ blockquote {
   border-left: 0.3rem solid #dce6f0;
   background: #f2f7fb;
 }
-
+blockquote p{
+    line-height: 1.5;
+}
 blockquote > :first-child {
     margin-top: 0;
 }

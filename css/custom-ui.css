@@ -31,6 +31,9 @@ pre{
 pre code{
     color:#1b1918 !important;
     font-size: 14px !important;
-    line-height: 20px !important;
+    line-height: 18px !important;
     font-family: 'consolas', 'menlo', 'courier', 'monospace', 'Microsoft Yahei' !important;
+}
+pre code p{
+    white-space: nowrap !important;
 }
