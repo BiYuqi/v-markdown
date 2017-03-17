@@ -2656,21 +2656,21 @@ var app = new Vue({
         },
         clearmd:function (){
             this.message = '';
-        },
-        tabSpace (event){
-            if (event.keyCode == 9) {
-                event.preventDefault();
-                var indent = '    ';
-                var target = event.target;
-                var start = target.selectionStart;
-                var end = target.selectionEnd;
-                var selected = window.getSelection().toString();
-                selected = indent + selected.replace(/\n/g,'\n'+indent);
-                this.message = this.message.substring(0,start) + selected + this.message.substring(end);
-                target.setSelectionRange(start+indent.length,start+selected.length);
-                // target.focus();
-            }
         }
+        // tabSpace (event){
+        //     if (event.keyCode == 9) {
+        //         event.preventDefault();
+        //         var indent = '    ';
+        //         var target = event.target;
+        //         var start = target.selectionStart;
+        //         var end = target.selectionEnd;
+        //         var selected = window.getSelection().toString();
+        //         selected = indent + selected.replace(/\n/g,'\n'+indent);
+        //         this.message = this.message.substring(0,start) + selected + this.message.substring(end);
+        //         target.setSelectionRange(start+indent.length,start+selected.length);
+        //         // target.focus();
+        //     }
+        // }
     },
     computed: {
         reversedMessage: function () {
@@ -2718,9 +2718,7 @@ var app = new Vue({
             while(content = reg4.exec(s)){
                 conStr.push(content[1])
             }
-            console.log(conStr);
             for(var i=0;i<conStr.length;i++){
-                // conStr[i].replace(/\t/g, "&nbsp;&nbsp;&nbsp;&nbsp;");
                 s = s.replace(conStr[i],conStr[i].replace(/\n/g, "<br>"));
             }
             return s;

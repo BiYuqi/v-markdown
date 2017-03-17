@@ -20,11 +20,10 @@
                 <div class="copy-btn"  data-clipboard-target="#bar" title="点击即可">复制md</div>
                 <div class="copy-html"  data-clipboard-target="#cohtml" title="点击即可">复制HTML</div>
                 <div class="clear-btn" @click="clearmd">清除md</div>
-
             </div>
             <div class="preview-content clearfix">
                 <div class="prev-editor left" v-if="isShow">
-                    <textarea spellcheck="false" class="prev-text" v-model="message" id="bar" @keydown.tab="tabSpace"></textarea>
+                    <textarea spellcheck="false" class="prev-text" v-model="message" id="bar"></textarea>
                 </div>
                 <div class="prev-view right" v-html="reversedMessage" v-if="isPrevShow" id="cohtml">
                     {{reversedMessage}}
