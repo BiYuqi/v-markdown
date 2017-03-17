@@ -21,17 +21,12 @@
             <div class="preview-content clearfix">
                 <div class="prev-editor left" v-if="isShow">
                     <textarea spellcheck="false" class="prev-text" v-model="message" id="bar"></textarea>
-                    <div class="copy-btn"  data-clipboard-target="#bar" title="点击即可">
-                        复制md
-                    </div>
-                    <div class="clear-btn" @click="clearmd">
-                        清除
-                    </div>
+                    <div class="copy-btn"  data-clipboard-target="#bar" title="点击即可">复制md</div>
+                    <div class="clear-btn" @click="clearmd">清除</div>
                 </div>
                 <div class="prev-view right" v-html="reversedMessage" v-if="isPrevShow">
                     {{reversedMessage}}
                 </div>
-
                 <div class="prev-btn" @click="isClick" v-if="isShow">预览</div>
                 <div class="prev-editor-btn" @click="isEditor" v-if="isPrevShow">编辑</div>
             </div>
