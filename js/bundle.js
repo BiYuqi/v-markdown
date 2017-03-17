@@ -2658,7 +2658,7 @@ var app = new Vue({
             });
             var config = {
                 regs:[
-                    /(var|function|return|new|try|exec|match|catch|break|continue|case|for|if|else|while|switch)/g,
+                    /\b(var|function|return|new|try|exec|match|catch|break|continue|case|for|if|else|while|switch)\b/g,
                     /(this)/g,
                     /(true|false)/g,
                     /([+])/g

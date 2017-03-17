@@ -26,6 +26,7 @@ pre{
     padding-left: 20px !important;
     background: #f1efee !important;
     overflow-y: auto !important;
+    margin: 15px 0;
 }
 pre code{
     color:#1b1918 !important;
