@@ -2641,9 +2641,7 @@ var app = new Vue({
                 '博客 |告白吧|程序媛\n\n'+
                  '## 关于我\n'+
                  '[我的博客](http://loadingmore.com) \n\n'+
-                 '**加粗一个字符**\n'+
-                 '\n'+
-                 '\n',
+                 '**加粗一个字符**\n',
         isShow:true,
         isPrevShow:true
     },
@@ -2704,7 +2702,7 @@ var app = new Vue({
                     return '<span style="color:'+config.fontColor[i]+'">'+m+'</span>'
                 });
             }
-            //函数名问题
+            //函数名高亮
             var regs = /\s(\w+)\(/g;
             var res = [];
             while(m = regs.exec(s)){
@@ -2712,6 +2710,18 @@ var app = new Vue({
             }
             for(var i=0;i<res.length;i++){
                 s = s.replace(res[i],'<span style="color:#3081E3">'+res[i]+'</span>');
+            }
+            //曾加代码换行
+            var reg4 = /<code[^>]+>([\s\S]+?)<\/code>/g;
+            var content;
+            var conStr=[];
+            while(content = reg4.exec(s)){
+                conStr.push(content[1])
+            }
+            console.log(conStr);
+            for(var i=0;i<conStr.length;i++){
+                // conStr[i].replace(/\t/g, "&nbsp;&nbsp;&nbsp;&nbsp;");
+                s = s.replace(conStr[i],conStr[i].replace(/\n/g, "<br>"));
             }
             return s;
         }
@@ -2725,6 +2735,7 @@ var app = new Vue({
     mounted:function() {
         this.$nextTick(function(){
             new Clipboard('.copy-btn');
+            new Clipboard('.copy-html');
         })
     }
 })

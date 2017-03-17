@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 body{
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: 'Microsoft Yahei';
     font-size: 14px;
 }
 html,body{
@@ -150,13 +150,35 @@ a{
     border-radius: 8px;
     line-height: 26px;
     text-align: center;
-    color: green;
-    background-color: #fafafa;
+    color: #F2F2F2;
+    background-color: #3DAB96;
+    cursor: pointer;
+    position: absolute;
+    top: 26px;
+    right:200px;
+    z-index: 998;
+    transition: all .5s;
+}
+.copy-html{
+    width: 90px;
+    height: 26px;
+    border-radius: 8px;
+    line-height: 26px;
+    text-align: center;
+    color: #F2F2F2;
+    background-color: #3DAB96;
     cursor: pointer;
     position: absolute;
     top: 26px;
     right:100px;
     z-index: 998;
+    transition: all .5s;
+}
+.copy-btn:hover,
+.copy-html:hover,
+.clear-btn:hover{
+    color: #fafafa;
+    background-color: #319381;
 }
 .clear-btn{
     width: 90px;
@@ -164,13 +186,14 @@ a{
     border-radius: 8px;
     line-height: 26px;
     text-align: center;
-    color: green;
-    background-color: #fafafa;
+    color: #F2F2F2;
+    background-color: #3DAB96;
     cursor: pointer;
     position: absolute;
     top: 26px;
     right:6px;
     z-index: 998;
+    transition: all .5s;
 }
 @media screen and (max-width: 1040px) {
     .header h1{

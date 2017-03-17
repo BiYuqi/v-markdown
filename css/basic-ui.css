@@ -40,7 +40,6 @@ h1, h2, h3, h4, h5, h6 {
 p {
   margin-bottom: 15px;
   margin-top: 15px;
-  font-size: 16px;
 }
 
 pre p {
@@ -90,7 +89,7 @@ blockquote {
   background: #f2f7fb;
 }
 blockquote p{
-    line-height: 1.5;
+    line-height: 1.4;
 }
 blockquote > :first-child {
     margin-top: 0;
