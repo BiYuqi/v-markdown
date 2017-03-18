@@ -2710,7 +2710,7 @@ var app = new Vue({
             for(var i=0;i<res.length;i++){
                 s = s.replace(res[i],'<span style="color:#3081E3">'+res[i]+'</span>');
             }
-            //曾加代码换行
+            //增加代码换行
             var reg4 = /<code[^>]+>([\s\S]+?)<\/code>/g;
             var content;
             var conStr=[];
