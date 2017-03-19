@@ -2646,34 +2646,34 @@ var app = new Vue({
         isPrevShow:true
     },
     methods: {
-        isClick:function (){
+        isClick:function(){
             this.isShow = false;
             this.isPrevShow = true;
         },
-        isEditor:function (){
+        isEditor:function(){
             this.isShow = true;
             this.isPrevShow = false;
         },
-        clearmd:function (){
+        clearmd:function(){
             this.message = '';
+        },
+        tabSpace:function(event){
+            if (event.keyCode == 9) {
+                event.preventDefault();
+                var indent = '    ';
+                var target = event.target;
+                var start = target.selectionStart;
+                var end = target.selectionEnd;
+                var selected = window.getSelection().toString();
+                selected = indent + selected.replace(/\n/g,'\n'+indent);
+                this.message = this.message.substring(0,start) + selected + this.message.substring(end);
+                target.setSelectionRange(start+indent.length,start+selected.length);
+                // target.focus();
+            }
         }
-        // tabSpace (event){
-        //     if (event.keyCode == 9) {
-        //         event.preventDefault();
-        //         var indent = '    ';
-        //         var target = event.target;
-        //         var start = target.selectionStart;
-        //         var end = target.selectionEnd;
-        //         var selected = window.getSelection().toString();
-        //         selected = indent + selected.replace(/\n/g,'\n'+indent);
-        //         this.message = this.message.substring(0,start) + selected + this.message.substring(end);
-        //         target.setSelectionRange(start+indent.length,start+selected.length);
-        //         // target.focus();
-        //     }
-        // }
     },
     computed: {
-        reversedMessage: function () {
+        reversedMessage: function() {
             var converter =  new showdown.Converter({
               tables: true
             });
@@ -2724,7 +2724,7 @@ var app = new Vue({
         }
     },
     watch: {
-        message: function () {
+        message: function() {
             var storage = window.localStorage;
                 storage.saveData = this.message;
         }
